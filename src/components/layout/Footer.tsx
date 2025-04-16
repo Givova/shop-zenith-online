@@ -75,19 +75,26 @@ const Footer = () => {
             <div className="border-t pt-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center md:text-left">
-                  <h4 className="font-semibold mb-2">Наш магазин</h4>
+                  <h4 className="font-semibold mb-2">Наш адрес</h4>
                   <p className="text-gray-600">
-                    г. Москва, ул. Пушкина, д. 10<br />
-                    г. Петербург, наб. Фонтанки, д. 108
+                    214012, г. Смоленск, Ново-Московская улица, 2/8, Смоленск
                   </p>
                 </div>
                 <div className="text-center">
                   <h4 className="font-semibold mb-2">Телефон</h4>
-                  <p className="text-gray-600">+7 915 123 4567</p>
+                  <p className="text-gray-600">
+                    <a href={"tel:+79203032909"}>
+                      +7 (920) 303-29-09
+                    </a>
+                  </p>
                 </div>
                 <div className="text-center md:text-right">
                   <h4 className="font-semibold mb-2">Email</h4>
-                  <p className="text-gray-600">petshop@example.com</p>
+                  <p className="text-gray-600">
+                    <a href={"mailto:info@exauto24.ru"}>
+                      info@exauto24.ru
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -100,12 +107,6 @@ const Footer = () => {
             <p className="text-sm text-gray-600 mb-4 md:mb-0">
               &copy; {new Date().getFullYear()} Pet Shop. Все права защищены.
             </p>
-            <div className="flex items-center space-x-2">
-              <img src="/visa.svg" alt="Виза" className="h-8" />
-              <img src="/mastercard.svg" alt="Мастеркард" className="h-8" />
-              <img src="/mir.svg" alt="МИР" className="h-8" />
-              <img src="/paypal.svg" alt="ПейПал" className="h-8" />
-            </div>
           </div>
         </div>
       </div>

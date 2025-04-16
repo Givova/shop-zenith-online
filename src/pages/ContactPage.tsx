@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from '@/components/ui/button';
@@ -24,12 +23,12 @@ const ContactPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
-    
-    toast.success('Your message has been sent! We will contact you shortly.');
-    
+
+    toast.success('Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+
     // Reset form
     setFormData({
       name: '',
@@ -45,9 +44,9 @@ const ContactPage = () => {
       <div className="bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+            <h1 className="text-4xl font-bold mb-4">Свяжитесь с нами</h1>
             <p className="text-xl text-gray-600">
-              We'd love to hear from you. Get in touch with us.
+              Мы будем рады услышать от вас. Свяжитесь с нами любым удобным способом.
             </p>
           </div>
         </div>
@@ -58,22 +57,22 @@ const ContactPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl font-bold mb-6">Отправить сообщение</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Your Name</Label>
+                    <Label htmlFor="name">Ваше имя</Label>
                     <Input
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="John Doe"
+                      placeholder="Иван Иванов"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Your Email</Label>
+                    <Label htmlFor="email">Ваш email</Label>
                     <Input
                       id="email"
                       name="email"
@@ -81,14 +80,14 @@ const ContactPage = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="john@example.com"
+                      placeholder="ivan@example.com"
                     />
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone">Номер телефона</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -98,41 +97,41 @@ const ContactPage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label htmlFor="subject">Тема</Label>
                     <Input
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      placeholder="How can we help?"
+                      placeholder="Как мы можем помочь?"
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
-                  <Label htmlFor="message">Your Message</Label>
+                  <Label htmlFor="message">Ваше сообщение</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="Tell us more about your inquiry..."
+                    placeholder="Расскажите подробнее о вашем запросе..."
                     rows={6}
                   />
                 </div>
-                
+
                 <Button type="submit" className="w-full bg-pet-orange hover:bg-pet-orange/90">
-                  Send Message
+                  Отправить сообщение
                 </Button>
               </form>
             </div>
-            
+
             {/* Contact Information */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-              
+              <h2 className="text-2xl font-bold mb-6">Контактная информация</h2>
+
               <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
                 <div className="space-y-6">
                   <div className="flex items-start">
@@ -140,49 +139,46 @@ const ContactPage = () => {
                       <MapPin className="text-pet-orange w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">Our Location</h3>
-                      <p className="text-gray-700">г. Москва, ул. Пушкина, д. 10</p>
-                      <p className="text-gray-700">г. Петербург, наб. Фонтанки, д. 108</p>
+                      <h3 className="font-semibold text-lg mb-1">Наш адрес</h3>
+                      <p className="text-gray-700">214012, г. Смоленск, Ново-Московская улица, 2/8</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="w-12 h-12 bg-pet-orange/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                       <Phone className="text-pet-orange w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">Phone Number</h3>
-                      <p className="text-gray-700">+7 (915) 123-4567</p>
-                      <p className="text-gray-700">+7 (495) 987-6543</p>
+                      <h3 className="font-semibold text-lg mb-1">Телефон</h3>
+                      <p className="text-gray-700">+7 (920) 303-29-09</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="w-12 h-12 bg-pet-orange/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                       <Mail className="text-pet-orange w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">Email Address</h3>
-                      <p className="text-gray-700">info@petshop.com</p>
-                      <p className="text-gray-700">support@petshop.com</p>
+                      <h3 className="font-semibold text-lg mb-1">Email</h3>
+                      <p className="text-gray-700">info@exauto24.ru</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <div className="w-12 h-12 bg-pet-orange/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                       <Clock className="text-pet-orange w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">Working Hours</h3>
-                      <p className="text-gray-700">Monday - Friday: 9:00 AM - 9:00 PM</p>
-                      <p className="text-gray-700">Saturday - Sunday: 10:00 AM - 7:00 PM</p>
+                      <h3 className="font-semibold text-lg mb-1">Часы работы</h3>
+                      <p className="text-gray-700">Пн–Пт: 9:00–17:00</p>
+                      <p className="text-gray-700">Сб, Вс: выходной</p>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-lg shadow-sm p-6">
-                <h3 className="font-semibold text-lg mb-4">Connect With Us</h3>
+                <h3 className="font-semibold text-lg mb-4">Мы в социальных сетях</h3>
                 <div className="flex space-x-4">
                   <a href="#" className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-pet-orange hover:text-white transition-colors">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -213,11 +209,18 @@ const ContactPage = () => {
 
       <div className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-8">Our Locations</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">Наш офис</h2>
           <div className="bg-white rounded-lg shadow-sm p-4 aspect-video">
             {/* This would typically be a Google Maps iframe */}
             <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
-              Google Maps would be embedded here
+              <iframe
+                className="w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Company location"
+                allowFullScreen
+                src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=32.054047%2C54.794370&mode=poi&poi%5Bpoint%5D=32.054037%2C54.794570&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1341191135&z=17.26"
+              />
             </div>
           </div>
         </div>
