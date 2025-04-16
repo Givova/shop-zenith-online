@@ -27,7 +27,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ products, loading = false }
   if (products.length === 0) {
     return (
       <div className="py-12 text-center">
-        <p className="text-lg text-gray-600">No products found matching your criteria.</p>
+        <p className="text-lg text-gray-600">Товаров не найдено по вашему запросу.</p>
       </div>
     );
   }

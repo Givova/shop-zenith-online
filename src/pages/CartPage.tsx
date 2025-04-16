@@ -13,15 +13,15 @@ const CartPage = () => {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-12">
-          <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
+          <h1 className="text-3xl font-bold mb-8">Корзина</h1>
           <div className="bg-white p-8 rounded-lg shadow-sm text-center max-w-lg mx-auto">
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <ShoppingBag size={36} className="text-gray-400" />
             </div>
-            <h2 className="text-2xl font-semibold mb-4">Your cart is empty</h2>
-            <p className="text-gray-600 mb-8">Looks like you haven't added any products to your cart yet.</p>
+            <h2 className="text-2xl font-semibold mb-4">Ваша корзина пуста</h2>
+            <p className="text-gray-600 mb-8">Похоже, вы ещё не добавили товаров в корзину.</p>
             <Button className="bg-pet-orange hover:bg-pet-orange/90" asChild>
-              <Link to="/shop">Start Shopping</Link>
+              <Link to="/shop">Начать покупки</Link>
             </Button>
           </div>
         </div>
@@ -32,7 +32,7 @@ const CartPage = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
+        <h1 className="text-3xl font-bold mb-8">Ваша корзина</h1>
         
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items */}
@@ -41,16 +41,16 @@ const CartPage = () => {
               {/* Header */}
               <div className="hidden md:grid grid-cols-5 gap-4 p-4 bg-gray-50 border-b">
                 <div className="col-span-2">
-                  <span className="font-medium">Product</span>
+                  <span className="font-medium">Товар</span>
                 </div>
                 <div className="text-center">
-                  <span className="font-medium">Price</span>
+                  <span className="font-medium">Цена</span>
                 </div>
                 <div className="text-center">
-                  <span className="font-medium">Quantity</span>
+                  <span className="font-medium">Количество</span>
                 </div>
                 <div className="text-right">
-                  <span className="font-medium">Subtotal</span>
+                  <span className="font-medium">Сумма</span>
                 </div>
               </div>
               
@@ -58,7 +58,6 @@ const CartPage = () => {
               <div className="divide-y">
                 {items.map((item) => (
                   <div key={item.product.id} className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4 items-center">
-                    {/* Product */}
                     <div className="col-span-1 md:col-span-2 flex items-center">
                       <div className="bg-gray-100 rounded-lg w-20 h-20 flex-shrink-0 flex items-center justify-center mr-4">
                         <img 
@@ -74,17 +73,15 @@ const CartPage = () => {
                           </Link>
                         </h3>
                         <p className="text-sm text-gray-500 md:hidden">
-                          ${item.product.price.toFixed(2)}
+                          {item.product.price.toFixed(2)} ₽
                         </p>
                       </div>
                     </div>
                     
-                    {/* Price */}
                     <div className="hidden md:block text-center">
-                      <span>${item.product.price.toFixed(2)}</span>
+                      <span>{item.product.price.toFixed(2)} ₽</span>
                     </div>
                     
-                    {/* Quantity */}
                     <div className="md:text-center">
                       <div className="flex items-center border rounded-md w-full sm:w-auto sm:inline-flex">
                         <button 
@@ -109,10 +106,9 @@ const CartPage = () => {
                       </div>
                     </div>
                     
-                    {/* Subtotal & Remove */}
                     <div className="flex items-center justify-between md:justify-end">
                       <span className="font-medium md:mr-4">
-                        ${(item.product.price * item.quantity).toFixed(2)}
+                        {(item.product.price * item.quantity).toFixed(2)} ₽
                       </span>
                       <button 
                         className="text-gray-500 hover:text-red-500"
@@ -133,15 +129,15 @@ const CartPage = () => {
                   className="border-gray-300"
                   onClick={clearCart}
                 >
-                  Clear Cart
+                  Очистить корзину
                 </Button>
                 <Button className="bg-pet-orange hover:bg-pet-orange/90" asChild>
-                  <Link to="/shop">Continue Shopping</Link>
+                  <Link to="/shop">Продолжить покупки</Link>
                 </Button>
               </div>
               
               <Button variant="ghost" className="text-gray-600">
-                Update Cart
+                Обновить корзину
               </Button>
             </div>
           </div>
@@ -149,27 +145,27 @@ const CartPage = () => {
           {/* Order Summary */}
           <div className="lg:w-1/3">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-bold mb-6">Order Summary</h2>
+              <h2 className="text-xl font-bold mb-6">Итого</h2>
               
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between border-b pb-4">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span className="font-medium">${totalPrice.toFixed(2)}</span>
+                  <span className="text-gray-600">Сумма</span>
+                  <span className="font-medium">{totalPrice.toFixed(2)} ₽</span>
                 </div>
                 
                 <div className="flex justify-between border-b pb-4">
-                  <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">Free</span>
+                  <span className="text-gray-600">Доставка</span>
+                  <span className="font-medium">Бесплатно</span>
                 </div>
                 
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-medium">Total</span>
-                  <span className="text-xl font-bold text-pet-orange">${totalPrice.toFixed(2)}</span>
+                  <span className="text-gray-900 font-medium">Итого</span>
+                  <span className="text-xl font-bold text-pet-orange">{totalPrice.toFixed(2)} ₽</span>
                 </div>
               </div>
               
               <Button className="w-full py-6 bg-pet-orange hover:bg-pet-orange/90">
-                Proceed to Checkout
+                Оформить заказ
               </Button>
               
               <div className="mt-6">
@@ -177,21 +173,21 @@ const CartPage = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-sm text-gray-600">Free shipping for orders over $50</span>
+                  <span className="text-sm text-gray-600">Бесплатная доставка от 50 ₽</span>
                 </div>
                 
                 <div className="flex items-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-sm text-gray-600">Secure checkout</span>
+                  <span className="text-sm text-gray-600">Безопасный платёж</span>
                 </div>
                 
                 <div className="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-sm text-gray-600">30-day returns policy</span>
+                  <span className="text-sm text-gray-600">30 дней на возврат</span>
                 </div>
               </div>
             </div>
