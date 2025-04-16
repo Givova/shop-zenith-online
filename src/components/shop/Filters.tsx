@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Filter } from '@/types/types';
 import { getAllCategories, getAllBrands, getAllTags, getCategoryCount, getBrandCount, getTagCount } from '@/data/products';
 
@@ -77,6 +77,28 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
     });
   };
 
+  const handleInputChange = (index: number, value: string) => {
+    const numValue = parseInt(value) || 0;
+    const newPriceRange = [...priceRange] as [number, number];
+    newPriceRange[index] = numValue;
+    
+    // Обеспечиваем, что минимальная цена не превышает максимальную
+    if (index === 0 && numValue > newPriceRange[1]) {
+      newPriceRange[1] = numValue;
+    } else if (index === 1 && numValue < newPriceRange[0]) {
+      newPriceRange[0] = numValue;
+    }
+    
+    setPriceRange(newPriceRange);
+    onFilterChange({
+      ...filter,
+      priceRange: {
+        min: newPriceRange[0],
+        max: newPriceRange[1]
+      }
+    });
+  };
+
   return (
     <div className="space-y-8">
       {/* Categories filter */}
@@ -105,20 +127,35 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
         <h3 className="font-semibold mb-4">Фильтр по цене</h3>
         <div className="px-2">
           <Slider
-            defaultValue={[priceRange[0], priceRange[1]]}
-            max={100}
-            step={1}
+            value={priceRange}
+            max={9000}
+            step={100}
+            minStepsBetweenThumbs={1}
             onValueChange={handlePriceChange}
             onValueCommit={handlePriceChangeEnd}
             className="mb-6"
           />
-          <div className="flex items-center justify-between">
-            <div className="bg-white border rounded px-3 py-1">
-              <span className="text-sm text-gray-600">Цена: от {priceRange[0]} ₽</span>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex-1">
+              <Input
+                type="number"
+                value={priceRange[0]}
+                onChange={(e) => handleInputChange(0, e.target.value)}
+                className="w-full"
+                min={0}
+                max={priceRange[1]}
+              />
             </div>
             <span className="text-gray-500">-</span>
-            <div className="bg-white border rounded px-3 py-1">
-              <span className="text-sm text-gray-600">до {priceRange[1]} ₽</span>
+            <div className="flex-1">
+              <Input
+                type="number"
+                value={priceRange[1]}
+                onChange={(e) => handleInputChange(1, e.target.value)}
+                className="w-full"
+                min={priceRange[0]}
+                max={9000}
+              />
             </div>
           </div>
         </div>
