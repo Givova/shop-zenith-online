@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Pet shop specific colors
+				"pet-orange": "#FF8A3C",
+				"pet-orange-light": "#FFB380",
+				"pet-gray": "#F2F2F2",
+				"pet-text": "#222222",
+				"pet-text-light": "#666666",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
