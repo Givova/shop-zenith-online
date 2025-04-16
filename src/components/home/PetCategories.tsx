@@ -26,12 +26,12 @@ const PetCategoryCard: React.FC<PetCategoryCardProps> = ({ type, name, image }) 
 
 const PetCategories = () => {
   const categories: PetCategoryCardProps[] = [
-    { type: 'cat', name: 'Cat', image: '/placeholders/cat-silhouette.png' },
-    { type: 'hamster', name: 'Hamster', image: '/placeholders/hamster-silhouette.png' },
-    { type: 'dog', name: 'Dog', image: '/placeholders/dog-silhouette.png' },
-    { type: 'parrot', name: 'Parrot', image: '/placeholders/parrot-silhouette.png' },
-    { type: 'rabbit', name: 'Rabbit', image: '/placeholders/rabbit-silhouette.png' },
-    { type: 'turtle', name: 'Turtle', image: '/placeholders/turtle-silhouette.png' },
+    { type: 'cat', name: 'Кошки', image: '/placeholders/cat-silhouette.png' },
+    { type: 'hamster', name: 'Хомяки', image: '/placeholders/hamster-silhouette.png' },
+    { type: 'dog', name: 'Собаки', image: '/placeholders/dog-silhouette.png' },
+    { type: 'parrot', name: 'Попугаи', image: '/placeholders/parrot-silhouette.png' },
+    { type: 'rabbit', name: 'Кролики', image: '/placeholders/rabbit-silhouette.png' },
+    { type: 'turtle', name: 'Черепахи', image: '/placeholders/turtle-silhouette.png' },
   ];
 
   const scrollLeft = () => {
@@ -52,7 +52,7 @@ const PetCategories = () => {
     <div className="py-12 bg-white">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold">Shop by pet</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">Магазин по питомцам</h2>
           <div className="flex space-x-2">
             <Button 
               variant="outline" 
