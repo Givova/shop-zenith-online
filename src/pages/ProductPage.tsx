@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Heart, Share2, ShoppingCart, Minus, Plus } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { Tab, Tabs, TabList, TabPanel } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import PopularProducts from '../components/products/PopularProducts';
 import { useCart } from '@/context/CartContext';
 import { products } from '../data/products';
@@ -193,12 +193,12 @@ const ProductPage = () => {
         {/* Tabs */}
         <div className="mb-12">
           <Tabs defaultValue="description">
-            <TabList className="border-b">
-              <Tab value="description">Description</Tab>
-              <Tab value="specifications">Specifications</Tab>
-              <Tab value="reviews">Reviews</Tab>
-            </TabList>
-            <TabPanel value="description" className="py-6">
+            <TabsList className="border-b">
+              <TabsTrigger value="description">Description</TabsTrigger>
+              <TabsTrigger value="specifications">Specifications</TabsTrigger>
+              <TabsTrigger value="reviews">Reviews</TabsTrigger>
+            </TabsList>
+            <TabsContent value="description" className="py-6">
               <h3 className="text-xl font-semibold mb-4">Product Description</h3>
               <p className="text-gray-700 mb-4">
                 {product.description}
@@ -208,8 +208,8 @@ const ProductPage = () => {
                 nisl nunc euismod nisi, eu porttitor nisl nunc eu nisi. Sed euismod, urna eu tincidunt consectetur,
                 nisl nunc euismod nisi, eu porttitor nisl nunc eu nisi.
               </p>
-            </TabPanel>
-            <TabPanel value="specifications" className="py-6">
+            </TabsContent>
+            <TabsContent value="specifications" className="py-6">
               <h3 className="text-xl font-semibold mb-4">Specifications</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
@@ -229,12 +229,12 @@ const ProductPage = () => {
                   <p className="text-gray-700">Blue, Red, Green</p>
                 </div>
               </div>
-            </TabPanel>
-            <TabPanel value="reviews" className="py-6">
+            </TabsContent>
+            <TabsContent value="reviews" className="py-6">
               <h3 className="text-xl font-semibold mb-4">Customer Reviews</h3>
               <p className="text-gray-600 mb-4">There are no reviews yet.</p>
               <Button className="bg-pet-orange hover:bg-pet-orange/90">Write a Review</Button>
-            </TabPanel>
+            </TabsContent>
           </Tabs>
         </div>
         
