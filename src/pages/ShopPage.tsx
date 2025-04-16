@@ -83,19 +83,19 @@ const ShopPage = () => {
   };
 
   const petTypes: { type: PetType | null, name: string, image: string }[] = [
-    { type: null, name: 'All Pets', image: '/placeholders/all-pets.png' },
-    { type: 'cat', name: 'Cat', image: '/placeholders/cat-silhouette.png' },
-    { type: 'dog', name: 'Dog', image: '/placeholders/dog-silhouette.png' },
-    { type: 'hamster', name: 'Hamster', image: '/placeholders/hamster-silhouette.png' },
-    { type: 'parrot', name: 'Parrot', image: '/placeholders/parrot-silhouette.png' },
-    { type: 'rabbit', name: 'Rabbit', image: '/placeholders/rabbit-silhouette.png' },
-    { type: 'turtle', name: 'Turtle', image: '/placeholders/turtle-silhouette.png' },
+    { type: null, name: 'Все питомцы', image: '/placeholders/all-pets.png' },
+    { type: 'cat', name: 'Кошки', image: '/placeholders/cat-silhouette.png' },
+    { type: 'dog', name: 'Собаки', image: '/placeholders/dog-silhouette.png' },
+    { type: 'hamster', name: 'Хомяки', image: '/placeholders/hamster-silhouette.png' },
+    { type: 'parrot', name: 'Попугаи', image: '/placeholders/parrot-silhouette.png' },
+    { type: 'rabbit', name: 'Кролики', image: '/placeholders/rabbit-silhouette.png' },
+    { type: 'turtle', name: 'Черепахи', image: '/placeholders/turtle-silhouette.png' },
   ];
 
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Shop</h1>
+        <h1 className="text-3xl font-bold mb-8">Магазин</h1>
         
         {/* Pet type filter */}
         <div className="flex overflow-x-auto pb-4 mb-6 -mx-4 px-4 space-x-4 scrollbar-hide">
@@ -118,14 +118,14 @@ const ShopPage = () => {
           <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-24">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold">Filters</h2>
+                <h2 className="text-xl font-semibold">Фильтры</h2>
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   className="text-gray-500 hover:text-pet-orange"
                   onClick={clearFilters}
                 >
-                  Clear All
+                  Сбросить
                 </Button>
               </div>
               <Filters filter={filter} onFilterChange={handleFilterChange} />
@@ -136,7 +136,7 @@ const ShopPage = () => {
           <div className="flex-1">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <p className="text-gray-600">Showing {products.length} products</p>
+                <p className="text-gray-600">Показано {products.length} товаров</p>
               </div>
               <div className="flex gap-4 items-center">
                 <Button 
@@ -146,18 +146,18 @@ const ShopPage = () => {
                   onClick={() => setMobileFiltersOpen(true)}
                 >
                   <SlidersHorizontal size={16} />
-                  <span>Filters</span>
+                  <span>Фильтры</span>
                 </Button>
                 
                 <select 
                   className="border-gray-300 rounded-md text-sm focus:outline-none focus:ring focus:ring-pet-orange/40 p-2"
                   defaultValue="featured"
                 >
-                  <option value="featured">Sort by latest</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="name-asc">Name: A to Z</option>
-                  <option value="name-desc">Name: Z to A</option>
+                  <option value="featured">По популярности</option>
+                  <option value="price-asc">Цена: от низкой к высокой</option>
+                  <option value="price-desc">Цена: от высокой к низкой</option>
+                  <option value="name-asc">Название: А-Я</option>
+                  <option value="name-desc">Название: Я-А</option>
                 </select>
               </div>
             </div>
@@ -172,7 +172,7 @@ const ShopPage = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
           <div className="absolute right-0 top-0 bottom-0 w-80 bg-white p-6 overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold">Filters</h2>
+              <h2 className="text-xl font-semibold">Фильтры</h2>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -192,13 +192,13 @@ const ShopPage = () => {
                   className="flex-1"
                   onClick={clearFilters}
                 >
-                  Clear All
+                  Сбросить
                 </Button>
                 <Button 
                   className="flex-1 bg-pet-orange hover:bg-pet-orange/90"
                   onClick={() => setMobileFiltersOpen(false)}
                 >
-                  Apply Filters
+                  Применить
                 </Button>
               </div>
             </div>

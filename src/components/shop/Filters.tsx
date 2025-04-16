@@ -81,7 +81,7 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
     <div className="space-y-8">
       {/* Categories filter */}
       <div>
-        <h3 className="font-semibold mb-4">Filter by categories</h3>
+        <h3 className="font-semibold mb-4">Фильтр по категориям</h3>
         <div className="space-y-2">
           {categories.map((category) => (
             <div key={category} className="flex items-center gap-2">
@@ -102,7 +102,7 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
 
       {/* Price range filter */}
       <div>
-        <h3 className="font-semibold mb-4">Filter by Price</h3>
+        <h3 className="font-semibold mb-4">Фильтр по цене</h3>
         <div className="px-2">
           <Slider
             defaultValue={[priceRange[0], priceRange[1]]}
@@ -114,11 +114,11 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
           />
           <div className="flex items-center justify-between">
             <div className="bg-white border rounded px-3 py-1">
-              <span className="text-sm text-gray-600">Price: ${priceRange[0]}</span>
+              <span className="text-sm text-gray-600">Цена: от ${priceRange[0]}</span>
             </div>
             <span className="text-gray-500">-</span>
             <div className="bg-white border rounded px-3 py-1">
-              <span className="text-sm text-gray-600">${priceRange[1]}</span>
+              <span className="text-sm text-gray-600">до ${priceRange[1]}</span>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
 
       {/* Brands filter */}
       <div>
-        <h3 className="font-semibold mb-4">Filter by brands</h3>
+        <h3 className="font-semibold mb-4">Фильтр по брендам</h3>
         <div className="space-y-2">
           {brands.map((brand) => (
             <div key={brand} className="flex items-center gap-2">
@@ -147,7 +147,7 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
 
       {/* Tags filter */}
       <div>
-        <h3 className="font-semibold mb-4">Filter by tags</h3>
+        <h3 className="font-semibold mb-4">Фильтр по тегам</h3>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <div 

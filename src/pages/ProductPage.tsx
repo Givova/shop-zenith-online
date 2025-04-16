@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Heart, Share2, ShoppingCart, Minus, Plus } from 'lucide-react';
@@ -48,9 +47,9 @@ const ProductPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="flex items-center text-sm text-gray-500 mb-8">
-          <Link to="/" className="hover:text-pet-orange">Home</Link>
+          <Link to="/" className="hover:text-pet-orange">Главная</Link>
           <span className="mx-2">/</span>
-          <Link to="/shop" className="hover:text-pet-orange">Shop</Link>
+          <Link to="/shop" className="hover:text-pet-orange">Магазин</Link>
           <span className="mx-2">/</span>
           <Link to={`/shop?pet=${product.petType}`} className="hover:text-pet-orange capitalize">{product.petType}</Link>
           <span className="mx-2">/</span>
@@ -62,7 +61,7 @@ const ProductPage = () => {
           className="flex items-center text-gray-600 hover:text-pet-orange mb-6"
           onClick={() => navigate(-1)}
         >
-          <ChevronLeft size={18} className="mr-1" /> Back
+          <ChevronLeft size={18} className="mr-1" /> Назад
         </Button>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-12">
@@ -84,7 +83,7 @@ const ProductPage = () => {
               <p className="text-gray-700 mb-6">{product.description}</p>
               
               <div className="flex items-center mb-4">
-                <span className="font-medium mr-3">Category:</span>
+                <span className="font-medium mr-3">Категория:</span>
                 <Link 
                   to={`/shop?category=${product.category}`} 
                   className="text-pet-orange hover:underline"
@@ -94,7 +93,7 @@ const ProductPage = () => {
               </div>
               
               <div className="flex items-center mb-4">
-                <span className="font-medium mr-3">Brand:</span>
+                <span className="font-medium mr-3">Бренд:</span>
                 <Link 
                   to={`/shop?brand=${product.brand}`} 
                   className="text-gray-700 hover:text-pet-orange"
@@ -104,7 +103,7 @@ const ProductPage = () => {
               </div>
               
               <div className="flex flex-wrap items-center">
-                <span className="font-medium mr-3">Tags:</span>
+                <span className="font-medium mr-3">Теги:</span>
                 <div className="flex flex-wrap gap-2">
                   {product.tags.map(tag => (
                     <Link 
@@ -194,53 +193,51 @@ const ProductPage = () => {
         <div className="mb-12">
           <Tabs defaultValue="description">
             <TabsList className="border-b">
-              <TabsTrigger value="description">Description</TabsTrigger>
-              <TabsTrigger value="specifications">Specifications</TabsTrigger>
-              <TabsTrigger value="reviews">Reviews</TabsTrigger>
+              <TabsTrigger value="description">Описание</TabsTrigger>
+              <TabsTrigger value="specifications">Характеристики</TabsTrigger>
+              <TabsTrigger value="reviews">Отзывы</TabsTrigger>
             </TabsList>
             <TabsContent value="description" className="py-6">
-              <h3 className="text-xl font-semibold mb-4">Product Description</h3>
+              <h3 className="text-xl font-semibold mb-4">Описание товара</h3>
               <p className="text-gray-700 mb-4">
                 {product.description}
               </p>
               <p className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, 
-                nisl nunc euismod nisi, eu porttitor nisl nunc eu nisi. Sed euismod, urna eu tincidunt consectetur,
-                nisl nunc euismod nisi, eu porttitor nisl nunc eu nisi.
+                Наши товары тщательно подобраны с заботой о комфорте и здоровье ваших питомцев.
               </p>
             </TabsContent>
             <TabsContent value="specifications" className="py-6">
-              <h3 className="text-xl font-semibold mb-4">Specifications</h3>
+              <h3 className="text-xl font-semibold mb-4">Характеристики</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium mb-2">Dimensions</h4>
-                  <p className="text-gray-700">10 x 15 x 5 cm</p>
+                  <h4 className="font-medium mb-2">Длина</h4>
+                  <p className="text-gray-700">10 x 15 x 5 см</p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium mb-2">Weight</h4>
-                  <p className="text-gray-700">0.5 kg</p>
+                  <h4 className="font-medium mb-2">Вес</h4>
+                  <p className="text-gray-700">0.5 кг</p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium mb-2">Material</h4>
-                  <p className="text-gray-700">Premium plastic</p>
+                  <h4 className="font-medium mb-2">Материал</h4>
+                  <p className="text-gray-700">Премиум-пластик</p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium mb-2">Color</h4>
-                  <p className="text-gray-700">Blue, Red, Green</p>
+                  <h4 className="font-medium mb-2">Цвет</h4>
+                  <p className="text-gray-700">Синий, Розовый, Зелёный</p>
                 </div>
               </div>
             </TabsContent>
             <TabsContent value="reviews" className="py-6">
-              <h3 className="text-xl font-semibold mb-4">Customer Reviews</h3>
-              <p className="text-gray-600 mb-4">There are no reviews yet.</p>
-              <Button className="bg-pet-orange hover:bg-pet-orange/90">Write a Review</Button>
+              <h3 className="text-xl font-semibold mb-4">Отзывы покупателей</h3>
+              <p className="text-gray-600 mb-4">Отзывов пока нет.</p>
+              <Button className="bg-pet-orange hover:bg-pet-orange/90">Написать отзыв</Button>
             </TabsContent>
           </Tabs>
         </div>
         
         {/* Related Products */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">You may also like</h2>
+          <h2 className="text-2xl font-bold mb-6">Вам также может понравиться</h2>
           <PopularProducts />
         </div>
       </div>
