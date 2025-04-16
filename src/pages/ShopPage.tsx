@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
@@ -17,7 +16,7 @@ const ShopPage = () => {
 
   const [filter, setFilter] = useState<Filter>({
     categories: [],
-    priceRange: { min: 0, max: 100 },
+    priceRange: { min: 0, max: 9000 },
     brands: [],
     tags: []
   });
@@ -71,10 +70,10 @@ const ShopPage = () => {
     });
   };
 
-  const clearFilters = () => {
+  const resetFilters = () => {
     setFilter({
       categories: [],
-      priceRange: { min: 0, max: 100 },
+      priceRange: { min: 0, max: 9000 },
       brands: [],
       tags: []
     });
@@ -123,7 +122,7 @@ const ShopPage = () => {
                   variant="ghost" 
                   size="sm" 
                   className="text-gray-500 hover:text-pet-orange"
-                  onClick={clearFilters}
+                  onClick={resetFilters}
                 >
                   Сбросить
                 </Button>
@@ -190,7 +189,7 @@ const ShopPage = () => {
                 <Button 
                   variant="outline" 
                   className="flex-1"
-                  onClick={clearFilters}
+                  onClick={resetFilters}
                 >
                   Сбросить
                 </Button>

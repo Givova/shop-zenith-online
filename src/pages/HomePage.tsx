@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import Hero from '../components/home/Hero';
@@ -16,7 +15,7 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Why Choose Our Pet Shop?</h2>
+              <h2 className="text-3xl font-bold mb-6">Почему выбирают наш зоомагазин?</h2>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-pet-orange/20 flex items-center justify-center mr-4">
@@ -25,8 +24,8 @@ const HomePage = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Premium Quality Products</h3>
-                    <p className="text-gray-600">We carefully select only the highest quality products for your beloved pets.</p>
+                    <h3 className="text-lg font-semibold mb-1">Товары премиум-качества</h3>
+                    <p className="text-gray-600">Мы тщательно отбираем только самые качественные товары для ваших любимых питомцев.</p>
                   </div>
                 </div>
                 
@@ -37,8 +36,8 @@ const HomePage = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Fast Delivery</h3>
-                    <p className="text-gray-600">We know how important it is to receive pet supplies quickly and reliably.</p>
+                    <h3 className="text-lg font-semibold mb-1">Быстрая доставка</h3>
+                    <p className="text-gray-600">Мы знаем, как важно получать товары для питомцев быстро и надёжно.</p>
                   </div>
                 </div>
                 
@@ -49,8 +48,8 @@ const HomePage = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Easy Returns</h3>
-                    <p className="text-gray-600">Not satisfied with your purchase? Return it within 30 days for a full refund.</p>
+                    <h3 className="text-lg font-semibold mb-1">Простой возврат</h3>
+                    <p className="text-gray-600">Не довольны покупкой? Верните товар в течение 30 дней и получите полный возврат средств.</p>
                   </div>
                 </div>
                 
@@ -61,8 +60,8 @@ const HomePage = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Expert Support</h3>
-                    <p className="text-gray-600">Our team of pet enthusiasts is here to help you with any questions or concerns.</p>
+                    <h3 className="text-lg font-semibold mb-1">Экспертная поддержка</h3>
+                    <p className="text-gray-600">Наша команда любителей животных готова помочь вам с любыми вопросами или проблемами.</p>
                   </div>
                 </div>
               </div>
@@ -71,7 +70,7 @@ const HomePage = () => {
             <div className="relative">
               <div className="absolute top-0 right-0 w-48 h-48 bg-pet-orange rounded-full opacity-20 -z-10"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-pet-orange rounded-full opacity-20 -z-10"></div>
-              <img src="/placeholders/pet-shop-interior.jpg" alt="Our pet shop" className="rounded-lg shadow-lg w-full" />
+              <img src="/placeholders/pet-shop-interior.jpg" alt="Наш зоомагазин" className="rounded-lg shadow-lg w-full" />
             </div>
           </div>
         </div>

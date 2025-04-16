@@ -1,4 +1,3 @@
-
 export interface Product {
   id: number;
   name: string;
@@ -12,7 +11,7 @@ export interface Product {
   popular: boolean;
 }
 
-export type PetType = 'cat' | 'dog' | 'hamster' | 'parrot' | 'rabbit' | 'turtle';
+export type PetType = 'кошка' | 'собака' | 'хомяк' | 'попугай' | 'кролик' | 'черепаха';
 
 export interface CartItem {
   product: Product;

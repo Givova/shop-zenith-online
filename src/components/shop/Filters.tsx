@@ -114,11 +114,11 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
           />
           <div className="flex items-center justify-between">
             <div className="bg-white border rounded px-3 py-1">
-              <span className="text-sm text-gray-600">Цена: от ${priceRange[0]}</span>
+              <span className="text-sm text-gray-600">Цена: от {priceRange[0]} ₽</span>
             </div>
             <span className="text-gray-500">-</span>
             <div className="bg-white border rounded px-3 py-1">
-              <span className="text-sm text-gray-600">до ${priceRange[1]}</span>
+              <span className="text-sm text-gray-600">до {priceRange[1]} ₽</span>
             </div>
           </div>
         </div>

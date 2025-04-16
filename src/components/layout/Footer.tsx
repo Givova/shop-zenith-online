@@ -13,7 +13,7 @@ const Footer = () => {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-pet-orange mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
               </svg>
-              <span className="font-bold text-xl">Pet Shop</span>
+              <span className="font-bold text-xl">Зоомагазин</span>
             </div>
             <p className="text-gray-600 mb-4">
               Ваш любимый магазин для питомцев с широким выбором товаров и аксессуаров.
@@ -42,7 +42,7 @@ const Footer = () => {
               <li><Link to="/blog" className="text-gray-600 hover:text-pet-orange transition-colors">Блог</Link></li>
               <li><Link to="/careers" className="text-gray-600 hover:text-pet-orange transition-colors">Вакансии</Link></li>
               <li><Link to="/gift-cards" className="text-gray-600 hover:text-pet-orange transition-colors">Подарочные карты</Link></li>
-              <li><Link to="/faq" className="text-gray-600 hover:text-pet-orange transition-colors">FAQ</Link></li>
+              <li><Link to="/faq" className="text-gray-600 hover:text-pet-orange transition-colors">Часто задаваемые вопросы</Link></li>
             </ul>
           </div>
 
@@ -101,10 +101,10 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} Pet Shop. Все права защищены.
             </p>
             <div className="flex items-center space-x-2">
-              <img src="/visa.svg" alt="Visa" className="h-8" />
-              <img src="/mastercard.svg" alt="Mastercard" className="h-8" />
-              <img src="/mir.svg" alt="MIR" className="h-8" />
-              <img src="/paypal.svg" alt="PayPal" className="h-8" />
+              <img src="/visa.svg" alt="Виза" className="h-8" />
+              <img src="/mastercard.svg" alt="Мастеркард" className="h-8" />
+              <img src="/mir.svg" alt="МИР" className="h-8" />
+              <img src="/paypal.svg" alt="ПейПал" className="h-8" />
             </div>
           </div>
         </div>

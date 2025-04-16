@@ -77,7 +77,7 @@ const ProductPage = () => {
           {/* Product Info */}
           <div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-            <p className="text-2xl font-bold text-pet-orange mb-4">${product.price.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-pet-orange mb-4">{product.price.toFixed(2)} ₽</p>
             
             <div className="border-t border-b py-4 my-6">
               <p className="text-gray-700 mb-6">{product.description}</p>
@@ -171,19 +171,19 @@ const ProductPage = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                Free shipping for orders over $50
+                Бесплатная доставка при заказе от 4500 ₽
               </p>
               <p className="flex items-center mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                Delivery within 3-5 business days
+                Доставка в течение 3-5 рабочих дней
               </p>
               <p className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                30-day returns policy
+                Возврат в течение 30 дней
               </p>
             </div>
           </div>
