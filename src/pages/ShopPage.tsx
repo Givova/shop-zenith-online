@@ -73,7 +73,7 @@ const ShopPage = () => {
   const resetFilters = () => {
     setFilter({
       categories: [],
-      priceRange: { min: 0, max: 9000 },
+      priceRange: { min: 0, max: 10000 },
       brands: [],
       tags: []
     });
@@ -81,15 +81,15 @@ const ShopPage = () => {
     navigate('/shop');
   };
 
-  const petTypes: { type: PetType | null, name: string, image: string }[] = [
-    { type: null, name: 'Все питомцы', image: '/placeholders/all-pets.png' },
-    { type: 'cat', name: 'Кошки', image: '/placeholders/cat-silhouette.png' },
-    { type: 'dog', name: 'Собаки', image: '/placeholders/dog-silhouette.png' },
-    { type: 'hamster', name: 'Хомяки', image: '/placeholders/hamster-silhouette.png' },
-    { type: 'parrot', name: 'Попугаи', image: '/placeholders/parrot-silhouette.png' },
-    { type: 'rabbit', name: 'Кролики', image: '/placeholders/rabbit-silhouette.png' },
-    { type: 'turtle', name: 'Черепахи', image: '/placeholders/turtle-silhouette.png' },
-  ];
+  // const petTypes: { type: PetType | null, name: string, image: string }[] = [
+  //   { type: null, name: 'Все питомцы', image: '/placeholders/all-pets.png' },
+  //   { type: 'cat', name: 'Кошки', image: '/placeholders/cat-silhouette.png' },
+  //   { type: 'dog', name: 'Собаки', image: '/placeholders/dog-silhouette.png' },
+  //   { type: 'hamster', name: 'Хомяки', image: '/placeholders/hamster-silhouette.png' },
+  //   { type: 'parrot', name: 'Попугаи', image: '/placeholders/parrot-silhouette.png' },
+  //   { type: 'rabbit', name: 'Кролики', image: '/placeholders/rabbit-silhouette.png' },
+  //   { type: 'turtle', name: 'Черепахи', image: '/placeholders/turtle-silhouette.png' },
+  // ];
 
   return (
     <Layout>
@@ -97,7 +97,7 @@ const ShopPage = () => {
         <h1 className="text-3xl font-bold mb-8">Магазин</h1>
         
         {/* Pet type filter */}
-        <div className="flex overflow-x-auto pb-4 mb-6 -mx-4 px-4 space-x-4 scrollbar-hide">
+        {/* <div className="flex overflow-x-auto pb-4 mb-6 -mx-4 px-4 space-x-4 scrollbar-hide">
           {petTypes.map((pet) => (
             <div 
               key={pet.type || 'all'} 
@@ -110,7 +110,7 @@ const ShopPage = () => {
               <p className={`text-xs text-center ${activePet === pet.type ? 'font-semibold text-pet-orange' : ''}`}>{pet.name}</p>
             </div>
           ))}
-        </div>
+        </div> */}
         
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters - Desktop */}

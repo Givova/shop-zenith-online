@@ -102,7 +102,7 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
   return (
     <div className="space-y-8">
       {/* Categories filter */}
-      <div>
+      {/* <div>
         <h3 className="font-semibold mb-4">Фильтр по категориям</h3>
         <div className="space-y-2">
           {categories.map((category) => (
@@ -120,7 +120,7 @@ const Filters: React.FC<FiltersProps> = ({ filter, onFilterChange }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Price range filter */}
       <div>

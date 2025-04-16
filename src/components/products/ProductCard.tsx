@@ -18,8 +18,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-all">
-      <div className="aspect-square relative overflow-hidden flex items-center justify-center bg-gray-100">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all">
+      <div className="aspect-square relative overflow-hidden flex items-center justify-center">
         <img 
           src={product.image} 
           alt={product.name} 
