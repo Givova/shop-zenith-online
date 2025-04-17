@@ -1,0 +1,44 @@
+.value-card {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 215, 0, 0) 0%,
+            rgba(255, 215, 0, 0.6) 50%,
+            rgba(255, 215, 0, 0) 100%);
+    transform: skewX(-25deg);
+    opacity: 0;
+    z-index: 1;
+}
+
+.value-card:hover::before {
+    animation: shine 1s ease-in-out;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 150%;
+        opacity: 0;
+    }
+}
