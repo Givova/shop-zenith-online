@@ -15,7 +15,7 @@ const Footer = () => {
                 alt="Логотип Точка корма"
                 className="h-8 w-auto mr-2"
               />
-              <span className="font-montserrat font-bold text-xl">Точка корма</span>
+              <span className="font-montserrat font-bold text-xl text-pet-orange">Точка корма</span>
             </div>
             <p className="text-gray-600 mb-4">
               Ваш любимый магазин кормов и аксессуаров для питомцев.

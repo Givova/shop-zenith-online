@@ -18,6 +18,7 @@ const ShopPage = () => {
   const { toast } = useToast();
   const searchParams = new URLSearchParams(location.search);
   const petTypeFromUrl = searchParams.get('pet') as PetType | null;
+  const searchFromUrl = searchParams.get('search');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +35,7 @@ const ShopPage = () => {
   const [loading, setLoading] = useState(false);
   const [activePet, setActivePet] = useState<PetType | null>(petTypeFromUrl);
   const [products, setProducts] = useState<Product[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(searchFromUrl || '');
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc'>('featured');
 
   const fetchProducts = async () => {
@@ -72,6 +73,12 @@ const ShopPage = () => {
     }
   }, [petTypeFromUrl]);
 
+  useEffect(() => {
+    if (searchFromUrl && searchFromUrl !== searchTerm) {
+      setSearchTerm(searchFromUrl);
+    }
+  }, [searchFromUrl]);
+
   const handleFilterChange = (newFilter: Filter) => {
     setFilter(newFilter);
   };
@@ -100,6 +107,19 @@ const ShopPage = () => {
     });
     setActivePet(null);
     navigate('/shop');
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+    if (value) {
+      searchParams.set('search', value);
+    } else {
+      searchParams.delete('search');
+    }
+    navigate({
+      pathname: location.pathname,
+      search: searchParams.toString()
+    });
   };
 
   return (
@@ -134,7 +154,7 @@ const ShopPage = () => {
                     placeholder="Поиск товаров..." 
                     className="pl-10 w-full"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => handleSearchChange(e.target.value)}
                   />
                 </div>
                 <Button

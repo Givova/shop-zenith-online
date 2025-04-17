@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/context/CartContext';
@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { totalItems } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +20,9 @@ const Header = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    if (searchQuery.trim()) {
+      navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
   };
 
   return (
@@ -57,10 +60,10 @@ const Header = () => {
               <img
                 src="/placeholders/icons_pet/Logo.png"
                 alt="Логотип Точка корма"
-                className="h-12 w-auto mr-2 object-contain overflow-hidden"
+                className="h-12 w-auto mr-2 ml-4 object-contain overflow-hidden"
                 style={{ objectPosition: 'center', marginTop: '-4px' }}
               />
-              <span className="font-montserrat font-bold text-xl leading-none">Точка корма</span>
+              <span className="font-montserrat font-bold text-xl leading-none text-pet-orange">Точка корма</span>
             </Link>
           </div>
 
