@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <div className="flex items-center mb-4">
-              <img 
-                src="/placeholders/icons_pet/Logo.png" 
-                alt="Логотип Точка корма" 
+              <img
+                src="/placeholders/icons_pet/Logo.png"
+                alt="Логотип Точка корма"
                 className="h-8 w-auto mr-2"
               />
               <span className="font-montserrat font-bold text-xl">Точка корма</span>
@@ -20,20 +20,7 @@ const Footer = () => {
             <p className="text-gray-600 mb-4">
               Ваш любимый магазин кормов и аксессуаров для питомцев.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="text-gray-500 hover:text-pet-orange transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-pet-orange transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-pet-orange transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-pet-orange transition-colors">
-                <Youtube size={20} />
-              </a>
-            </div>
+
           </div>
 
           {/* Company */}

@@ -34,7 +34,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="z-10">
-            <div className="text-sm font-medium text-pet-orange mb-2 font-montserrat">Точка корма</div>
+            <div className="text-sm font-medium text-pet-orange mb-2 font-montserrat"></div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-montserrat">
               Дружественный и заботливый магазин кормов для домашних животных
             </h1>
@@ -42,16 +42,16 @@ const Hero = () => {
               Мы с любовью заботимся о ваших питомцах, предлагая только лучшие товары и аксессуары
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-pet-orange hover:bg-pet-orange/90 text-white"
                 asChild
               >
                 <Link to="/shop">Купить сейчас</Link>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="border-pet-orange text-pet-orange hover:bg-pet-orange/10"
                 asChild
               >

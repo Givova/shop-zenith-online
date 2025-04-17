@@ -1,0 +1,183 @@
+.value-card {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 215, 0, 0) 0%,
+            rgba(255, 215, 0, 0.6) 50%,
+            rgba(255, 215, 0, 0) 100%);
+    transform: skewX(-25deg);
+    opacity: 0;
+    z-index: 1;
+}
+
+.value-card:hover::before {
+    animation: shine 1s ease-in-out;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 150%;
+        opacity: 0;
+    }
+}
+
+/* Стили для эффекта бегущей змейки на карточках команды */
+.team-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out, z-index 0s;
+    z-index: 1;
+    transform-origin: center;
+}
+
+.team-card::before,
+.team-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(255, 140, 0, 0.7);
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    z-index: 10;
+}
+
+.team-card::before {
+    top: 0;
+    transform-origin: left;
+}
+
+.team-card::after {
+    bottom: 0;
+    transform-origin: right;
+}
+
+.team-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: right;
+    animation: snake-border-x 2s infinite;
+}
+
+.team-card:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    animation: snake-border-x 2s infinite 0.5s;
+}
+
+.team-card>.snake-border-left,
+.team-card>.snake-border-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: rgba(255, 140, 0, 0.7);
+    transform: scaleY(0);
+    transition: transform 0.5s;
+    z-index: 10;
+}
+
+.team-card>.snake-border-left {
+    left: 0;
+    transform-origin: top;
+}
+
+.team-card>.snake-border-right {
+    right: 0;
+    transform-origin: bottom;
+}
+
+.team-card:hover>.snake-border-left {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    animation: snake-border-y 2s infinite 0.25s;
+}
+
+.team-card:hover>.snake-border-right {
+    transform: scaleY(1);
+    transform-origin: top;
+    animation: snake-border-y 2s infinite 0.75s;
+}
+
+@keyframes snake-border-x {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    50% {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+
+    51% {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+@keyframes snake-border-y {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    51% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+
+/* Стили для изменения размера карточек команды при наведении */
+.team-grid-container {
+    position: relative;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+    z-index: 5;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.team-grid-container:hover .team-card:not(:hover) {
+    transform: scale(0.95);
+    opacity: 0.8;
+    filter: grayscale(20%);
+}

@@ -70,7 +70,11 @@ const HomePage = () => {
             <div className="relative">
               <div className="absolute top-0 right-0 w-48 h-48 bg-pet-orange rounded-full opacity-20 -z-10"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-pet-orange rounded-full opacity-20 -z-10"></div>
-              <img src="/placeholders/pet-shop-interior.jpg" alt="Наш зоомагазин" className="rounded-lg shadow-lg w-full" />
+              <img 
+                src="/placeholders/comand/Main_page_cat.png" 
+                alt="Наш зоомагазин" 
+                className="w-full max-w-md mx-auto rounded-2xl"
+              />
             </div>
           </div>
         </div>

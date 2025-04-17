@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,8 +6,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { toast } from "sonner";
+import { useLocation } from 'react-router-dom';
 
 const ContactPage = () => {
+  const location = useLocation();
+  const mapRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +18,19 @@ const ContactPage = () => {
     subject: '',
     message: '',
   });
+
+  useEffect(() => {
+    // Прокрутка страницы вверх при монтировании компонента
+    window.scrollTo(0, 0);
+
+    // Проверяем, есть ли параметр scrollToMap в state
+    if (location.state && location.state.scrollToMap) {
+      // Даем немного времени для рендеринга страницы
+      setTimeout(() => {
+        mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }, [location]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -177,7 +193,7 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              {/* <div className="bg-white rounded-lg shadow-sm p-6">
                 <h3 className="font-semibold text-lg mb-4">Мы в социальных сетях</h3>
                 <div className="flex space-x-4">
                   <a href="#" className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-pet-orange hover:text-white transition-colors">
@@ -201,13 +217,13 @@ const ContactPage = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-100 py-12">
+      <div className="bg-gray-100 py-12" ref={mapRef}>
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">Наш офис</h2>
           <div className="bg-white rounded-lg shadow-sm p-4 aspect-video">
