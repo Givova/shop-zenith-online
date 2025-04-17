@@ -1,13 +1,78 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
+import { OrderModal } from '@/components/OrderModal';
+import { bitrix } from '@/integrations/bitrix';
+import { useToast } from "@/components/ui/use-toast";
 
 const CartPage = () => {
   const { items, totalItems, totalPrice, removeItem, updateQuantity, clearCart } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { toast } = useToast();
+
+  const modalCartItems = items.map(item => ({
+    id: item.product.id,
+    name: item.product.name,
+    price: item.product.price,
+    quantity: item.quantity,
+  }));
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleOrderSubmit = async (formData: { name: string; phone: string; email: string }) => {
+    const orderDetails = modalCartItems
+      .map(item => `${item.name} (x${item.quantity}) - ${(item.price * item.quantity).toFixed(2)} ₽`)
+      .join('\n');
+    const totalAmount = modalCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    const leadData = {
+      fields: {
+        TITLE: `Новый заказ из интернет-магазина №${Date.now()}`,
+        NAME: formData.name,
+        PHONE: [{ VALUE: formData.phone, VALUE_TYPE: "WORK" }],
+        EMAIL: [{ VALUE: formData.email, VALUE_TYPE: "WORK" }],
+        COMMENTS: `Состав заказа:\n${orderDetails}\n\nИтоговая сумма: ${totalAmount.toFixed(2)} ₽`,
+        SOURCE_ID: "WEB",
+      },
+      params: { "REGISTER_SONET_EVENT": "Y" }
+    };
+
+    try {
+      const response = await bitrix.callMethod('crm.lead.add', leadData);
+
+      if (response.error) {
+        console.error('Bitrix API Error:', response.error, response.error_description);
+        throw new Error(response.error_description || 'Не удалось создать лид в Bitrix');
+      }
+
+      console.log('Lead created successfully:', response.result);
+
+      handleCloseModal();
+      clearCart();
+      toast({
+        title: "Заказ принят!",
+        description: "Ваш заказ успешно оформлен и передан в обработку.",
+      });
+
+    } catch (error) {
+      console.error('Error submitting order:', error);
+      toast({
+        title: "Ошибка оформления заказа",
+        description: error instanceof Error ? error.message : "Произошла непредвиденная ошибка.",
+        variant: "destructive",
+      });
+      throw error;
+    }
+  };
 
   if (totalItems === 0) {
     return (
@@ -164,7 +229,10 @@ const CartPage = () => {
                 </div>
               </div>
               
-              <Button className="w-full py-6 bg-pet-orange hover:bg-pet-orange/90">
+              <Button 
+                className="w-full py-6 bg-pet-orange hover:bg-pet-orange/90"
+                onClick={handleOpenModal}
+              >
                 Оформить заказ
               </Button>
               
@@ -194,6 +262,12 @@ const CartPage = () => {
           </div>
         </div>
       </div>
+      <OrderModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        cartItems={modalCartItems}
+        onSubmit={handleOrderSubmit}
+      />
     </Layout>
   );
 };

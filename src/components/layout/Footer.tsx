@@ -80,8 +80,8 @@ const Footer = () => {
                 <div className="text-center md:text-right">
                   <h4 className="font-semibold mb-2">Email</h4>
                   <p className="text-gray-600">
-                    <a href={"mailto:info@exauto24.ru"}>
-                      info@exauto24.ru
+                    <a href={"mailto:info@tochkakorma.ru"}>
+                      info@tochkakorma.ru
                     </a>
                   </p>
                 </div>

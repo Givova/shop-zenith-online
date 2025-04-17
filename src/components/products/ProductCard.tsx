@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Product } from '@/types/types';
 import { useCart } from '@/context/CartContext';
 
@@ -12,6 +13,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addItem } = useCart();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleAddToCart = () => {
     addItem(product, 1);
@@ -20,10 +22,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all">
       <div className="aspect-square relative overflow-hidden flex items-center justify-center">
+        {!imageLoaded && (
+          <Skeleton className="absolute inset-0 w-full h-full" />
+        )}
         <img 
           src={product.image} 
           alt={product.name} 
-          className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
+          className={`max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
+          loading="lazy"
         />
       </div>
       <div className="p-4">

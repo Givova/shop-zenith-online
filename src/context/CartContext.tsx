@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 import { Product, CartItem } from '../types/types';
 import { toast } from "sonner";
@@ -106,12 +105,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addItem = (product: Product, quantity: number) => {
     dispatch({ type: 'ADD_ITEM', payload: { product, quantity } });
-    toast.success(`Added ${product.name} to cart`);
+    toast.success(`Товар ${product.name} добавлен в корзину`);
   };
 
   const removeItem = (productId: number) => {
     dispatch({ type: 'REMOVE_ITEM', payload: { productId } });
-    toast.info("Item removed from cart");
+    toast.info("Товар удален из корзины");
   };
 
   const updateQuantity = (productId: number, quantity: number) => {
@@ -120,7 +119,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
-    toast.info("Cart cleared");
+    toast.info("Корзина очищена");
   };
 
   return (
@@ -141,7 +140,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
   if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error('useCart должен использоваться внутри CartProvider');
   }
   return context;
 };

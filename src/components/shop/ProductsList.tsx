@@ -2,6 +2,7 @@
 import React from 'react';
 import ProductCard from '../products/ProductCard';
 import { Product } from '@/types/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface ProductsListProps {
   products: Product[];

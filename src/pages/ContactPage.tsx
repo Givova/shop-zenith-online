@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { toast } from "sonner";
 import { useLocation } from 'react-router-dom';
+import { bitrix } from '@/integrations/bitrix';
 
 const ContactPage = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const ContactPage = () => {
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Прокрутка страницы вверх при монтировании компонента
@@ -37,22 +39,46 @@ const ContactPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
+    try {
+      const leadData = {
+        fields: {
+          TITLE: `Новое сообщение с сайта: ${formData.subject}`,
+          NAME: formData.name,
+          PHONE: [{ VALUE: formData.phone, VALUE_TYPE: "WORK" }],
+          EMAIL: [{ VALUE: formData.email, VALUE_TYPE: "WORK" }],
+          COMMENTS: `Тема: ${formData.subject}\n\nСообщение:\n${formData.message}`,
+          SOURCE_ID: "WEB",
+        },
+        params: { "REGISTER_SONET_EVENT": "Y" }
+      };
 
-    toast.success('Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+      const response = await bitrix.callMethod('crm.lead.add', leadData);
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
+      if (response.error) {
+        throw new Error(response.error_description || 'Не удалось отправить сообщение');
+      }
+
+      toast.success('Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error(error instanceof Error ? error.message : 'Произошла ошибка при отправке сообщения');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -85,6 +111,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       placeholder="Иван Иванов"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="space-y-2">
@@ -97,6 +124,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       placeholder="ivan@example.com"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -110,6 +138,7 @@ const ContactPage = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+7 (XXX) XXX-XXXX"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="space-y-2">
@@ -121,6 +150,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       placeholder="Как мы можем помочь?"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -135,11 +165,16 @@ const ContactPage = () => {
                     required
                     placeholder="Расскажите подробнее о вашем запросе..."
                     rows={6}
+                    disabled={isSubmitting}
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-pet-orange hover:bg-pet-orange/90">
-                  Отправить сообщение
+                <Button 
+                  type="submit" 
+                  className="w-full bg-pet-orange hover:bg-pet-orange/90"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Отправка...' : 'Отправить сообщение'}
                 </Button>
               </form>
             </div>
@@ -176,7 +211,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg mb-1">Email</h3>
-                      <p className="text-gray-700">info@exauto24.ru</p>
+                      <p className="text-gray-700">info@tochkakorma.ru</p>
                     </div>
                   </div>
 
