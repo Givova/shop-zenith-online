@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from '@/components/ui/button';
@@ -107,35 +106,35 @@ const AboutPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-32 h-32 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
-                <img src="/placeholders/team-member-1.jpg" alt="Team Member" className="w-full h-full object-cover" />
+              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
+                <img src="/placeholders/comand/Igor.png" alt="Игорь Зеликов" className="w-full h-full object-cover object-top" />
               </div>
-              <h3 className="text-xl font-semibold mb-1">Алексей Петров</h3>
-              <p className="text-pet-orange mb-3">Основатель & CEO</p>
+              <h3 className="text-xl font-semibold mb-1">Игорь Зеликов</h3>
+              <p className="text-pet-orange mb-3">Основатель</p>
               <p className="text-gray-600">
-                Алексей основал Pet Shop в 2015 году, воплотив свою страсть к заботе о животных.
+                Игорь основал "Точку корма" с целью создания лучшего магазина кормов для домашних животных.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-32 h-32 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
-                <img src="/placeholders/team-member-2.jpg" alt="Team Member" className="w-full h-full object-cover" />
+              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
+                <img src="/placeholders/comand/Ilya1.png" alt="Илья Гусаров" className="w-full h-full object-cover object-top" />
               </div>
-              <h3 className="text-xl font-semibold mb-1">Мария Иванова</h3>
-              <p className="text-pet-orange mb-3">Ветеринарный консультант</p>
+              <h3 className="text-xl font-semibold mb-1">Илья Гусаров</h3>
+              <p className="text-pet-orange mb-3">Ведущий разработчик</p>
               <p className="text-gray-600">
-                Мария - опытный ветеринар, который помогает нам выбирать лучшие продукты для вашего питомца.
+                Илья отвечает за разработку и внедрение новых технологий в нашем магазине.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-32 h-32 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
-                <img src="/placeholders/team-member-3.jpg" alt="Team Member" className="w-full h-full object-cover" />
+              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
+                <img src="/placeholders/comand/Ilya2.png" alt="Илья Моторин" className="w-full h-full object-cover object-top" />
               </div>
-              <h3 className="text-xl font-semibold mb-1">Дмитрий Смирнов</h3>
-              <p className="text-pet-orange mb-3">Менеджер по продуктам</p>
+              <h3 className="text-xl font-semibold mb-1">Илья Моторин</h3>
+              <p className="text-pet-orange mb-3">Главный программист</p>
               <p className="text-gray-600">
-                Дмитрий заботится о том, чтобы мы всегда предлагали свежие и качественные товары для питомцев.
+                Илья обеспечивает техническую поддержку и развитие нашего онлайн-магазина.
               </p>
             </div>
           </div>
