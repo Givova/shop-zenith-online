@@ -16,7 +16,7 @@ const Header = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Searching for:', searchQuery);
@@ -54,9 +54,9 @@ const Header = () => {
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img 
-                src="/placeholders/icons_pet/Logo.png" 
-                alt="Логотип Точка корма" 
+              <img
+                src="/placeholders/icons_pet/Logo.png"
+                alt="Логотип Точка корма"
                 className="h-12 w-auto mr-2 object-contain overflow-hidden"
                 style={{ objectPosition: 'center', marginTop: '-4px' }}
               />
@@ -65,26 +65,26 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={`font-medium ${isActive('/') ? 'text-pet-orange' : 'text-gray-700 hover:text-pet-orange'}`}
             >
               Главная
             </Link>
-            <Link 
-              to="/shop" 
+            <Link
+              to="/shop"
               className={`font-medium ${isActive('/shop') ? 'text-pet-orange' : 'text-gray-700 hover:text-pet-orange'}`}
             >
               Магазин
             </Link>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className={`font-medium ${isActive('/about') ? 'text-pet-orange' : 'text-gray-700 hover:text-pet-orange'}`}
             >
               О нас
             </Link>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className={`font-medium ${isActive('/contact') ? 'text-pet-orange' : 'text-gray-700 hover:text-pet-orange'}`}
             >
               Контакты
@@ -104,11 +104,11 @@ const Header = () => {
                 <Search size={18} />
               </button>
             </form>
-            
-            <button className="hidden md:flex text-gray-700 hover:text-pet-orange">
+
+            {/* <button className="hidden md:flex text-gray-700 hover:text-pet-orange">
               <User size={22} />
-            </button>
-            
+            </button> */}
+
             <Link to="/cart" className="relative">
               <ShoppingCart size={22} className="text-gray-700 hover:text-pet-orange" />
               {totalItems > 0 && (
@@ -117,8 +117,8 @@ const Header = () => {
                 </Badge>
               )}
             </Link>
-            
-            <button 
+
+            <button
               className="md:hidden text-gray-700 hover:text-pet-orange"
               onClick={toggleMobileMenu}
             >
@@ -143,45 +143,45 @@ const Header = () => {
                 <Search size={18} />
               </button>
             </form>
-            
+
             <nav className="flex flex-col space-y-3 pb-4">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className={`font-medium ${isActive('/') ? 'text-pet-orange' : 'text-gray-700'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Главная
               </Link>
-              <Link 
-                to="/shop" 
+              <Link
+                to="/shop"
                 className={`font-medium ${isActive('/shop') ? 'text-pet-orange' : 'text-gray-700'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Магазин
               </Link>
-              <Link 
-                to="/about" 
+              <Link
+                to="/about"
                 className={`font-medium ${isActive('/about') ? 'text-pet-orange' : 'text-gray-700'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 О нас
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 className={`font-medium ${isActive('/contact') ? 'text-pet-orange' : 'text-gray-700'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Контакты
               </Link>
-              <Link 
-                to="/account" 
+              <Link
+                to="/account"
                 className="font-medium text-gray-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Мой аккаунт
               </Link>
             </nav>
-            
+
             <div className="border-t pt-3 pb-2">
               <div className="flex flex-col space-y-2 text-sm text-gray-600">
                 <span className="flex items-center">

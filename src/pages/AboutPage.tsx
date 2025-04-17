@@ -110,34 +110,37 @@ const AboutPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
-                <img src="/placeholders/comand/Igor.png" alt="Игорь Зеликов" className="w-full h-full object-cover object-top" />
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-100 hover:border-pet-orange/20 team-card">
+              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-pet-orange/10 hover:ring-pet-orange/30 transition-all duration-300 relative">
+                <div className="absolute inset-0 bg-pet-orange/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                <img src="/placeholders/comand/Igor.png" alt="Игорь Зеликов" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
               </div>
               <h3 className="text-xl font-semibold mb-1">Игорь Зеликов</h3>
-              <p className="text-pet-orange mb-3">Основатель</p>
+              <p className="text-pet-orange mb-3 font-medium">Основатель</p>
               <p className="text-gray-600">
                 Игорь основал "Точку корма" с целью создания лучшего магазина кормов для домашних животных.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
-                <img src="/placeholders/comand/Ilya1.png" alt="Илья Гусаров" className="w-full h-full object-cover object-top" />
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-100 hover:border-pet-orange/20 team-card">
+              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-pet-orange/10 hover:ring-pet-orange/30 transition-all duration-300 relative">
+                <div className="absolute inset-0 bg-pet-orange/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                <img src="/placeholders/comand/Ilya1.png" alt="Илья Гусаров" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
               </div>
               <h3 className="text-xl font-semibold mb-1">Илья Гусаров</h3>
-              <p className="text-pet-orange mb-3">Ведущий разработчик</p>
+              <p className="text-pet-orange mb-3 font-medium">Ведущий разработчик</p>
               <p className="text-gray-600">
                 Илья отвечает за разработку и внедрение новых технологий в нашем магазине.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4">
-                <img src="/placeholders/comand/Ilya2.png" alt="Илья Моторин" className="w-full h-full object-cover object-top" />
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-100 hover:border-pet-orange/20 team-card">
+              <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-pet-orange/10 hover:ring-pet-orange/30 transition-all duration-300 relative">
+                <div className="absolute inset-0 bg-pet-orange/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                <img src="/placeholders/comand/Ilya2.png" alt="Илья Моторин" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
               </div>
               <h3 className="text-xl font-semibold mb-1">Илья Моторин</h3>
-              <p className="text-pet-orange mb-3">Главный программист</p>
+              <p className="text-pet-orange mb-3 font-medium">Главный программист</p>
               <p className="text-gray-600">
                 Илья обеспечивает техническую поддержку и развитие нашего онлайн-магазина.
               </p>
