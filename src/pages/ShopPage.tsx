@@ -14,6 +14,11 @@ const ShopPage = () => {
   const searchParams = new URLSearchParams(location.search);
   const petTypeFromUrl = searchParams.get('pet') as PetType | null;
 
+  // Прокрутка страницы вверх при переходе на нее
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   const [filter, setFilter] = useState<Filter>({
     categories: [],
     priceRange: { min: 0, max: 9000 },
@@ -29,7 +34,7 @@ const ShopPage = () => {
   useEffect(() => {
     // Update products when the filter changes
     setLoading(true);
-    
+
     setTimeout(() => {
       const filtered = getFilteredProducts(
         activePet || undefined,
@@ -56,14 +61,14 @@ const ShopPage = () => {
 
   const handlePetTypeChange = (petType: PetType | null) => {
     setActivePet(petType);
-    
+
     // Update URL
     if (petType) {
       searchParams.set('pet', petType);
     } else {
       searchParams.delete('pet');
     }
-    
+
     navigate({
       pathname: location.pathname,
       search: searchParams.toString()
@@ -95,7 +100,7 @@ const ShopPage = () => {
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Магазин</h1>
-        
+
         {/* Pet type filter */}
         {/* <div className="flex overflow-x-auto pb-4 mb-6 -mx-4 px-4 space-x-4 scrollbar-hide">
           {petTypes.map((pet) => (
@@ -111,16 +116,16 @@ const ShopPage = () => {
             </div>
           ))}
         </div> */}
-        
+
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters - Desktop */}
           <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-24">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-semibold">Фильтры</h2>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   className="text-gray-500 hover:text-pet-orange"
                   onClick={resetFilters}
                 >
@@ -130,7 +135,7 @@ const ShopPage = () => {
               <Filters filter={filter} onFilterChange={handleFilterChange} />
             </div>
           </div>
-          
+
           {/* Products */}
           <div className="flex-1">
             <div className="flex justify-between items-center mb-6">
@@ -138,17 +143,17 @@ const ShopPage = () => {
                 <p className="text-gray-600">Показано {products.length} товаров</p>
               </div>
               <div className="flex gap-4 items-center">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="lg:hidden flex items-center gap-2"
                   onClick={() => setMobileFiltersOpen(true)}
                 >
                   <SlidersHorizontal size={16} />
                   <span>Фильтры</span>
                 </Button>
-                
-                <select 
+
+                <select
                   className="border-gray-300 rounded-md text-sm focus:outline-none focus:ring focus:ring-pet-orange/40 p-2"
                   defaultValue="featured"
                 >
@@ -160,40 +165,40 @@ const ShopPage = () => {
                 </select>
               </div>
             </div>
-            
+
             <ProductsList products={products} loading={loading} />
           </div>
         </div>
       </div>
-      
+
       {/* Mobile filters overlay */}
       {mobileFiltersOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
           <div className="absolute right-0 top-0 bottom-0 w-80 bg-white p-6 overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold">Фильтры</h2>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="text-gray-500"
                 onClick={() => setMobileFiltersOpen(false)}
               >
                 <X size={20} />
               </Button>
             </div>
-            
+
             <Filters filter={filter} onFilterChange={handleFilterChange} />
-            
+
             <div className="sticky bottom-0 pt-4 pb-2 bg-white border-t mt-8">
               <div className="flex gap-4">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="flex-1"
                   onClick={resetFilters}
                 >
                   Сбросить
                 </Button>
-                <Button 
+                <Button
                   className="flex-1 bg-pet-orange hover:bg-pet-orange/90"
                   onClick={() => setMobileFiltersOpen(false)}
                 >

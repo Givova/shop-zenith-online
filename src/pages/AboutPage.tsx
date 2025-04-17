@@ -159,7 +159,7 @@ const AboutPage = () => {
               className="bg-pet-orange hover:bg-pet-orange/90"
               asChild
             >
-              <Link to="/contact">Свяжитесь с нами</Link>
+              <Link to="/contact" state={{ scrollToTop: true }}>Свяжитесь с нами</Link>
             </Button>
             <Button
               size="lg"
@@ -167,7 +167,7 @@ const AboutPage = () => {
               className="border-pet-orange text-pet-orange hover:bg-pet-orange/10"
               asChild
             >
-              <Link to="/shop">Начать покупки</Link>
+              <Link to="/shop" state={{ scrollToTop: true }}>Начать покупки</Link>
             </Button>
           </div>
         </div>
