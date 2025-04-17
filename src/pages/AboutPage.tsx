@@ -109,8 +109,10 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 team-grid-container">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-100 hover:border-pet-orange/20 team-card">
+              <div className="snake-border-left"></div>
+              <div className="snake-border-right"></div>
               <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-pet-orange/10 hover:ring-pet-orange/30 transition-all duration-300 relative">
                 <div className="absolute inset-0 bg-pet-orange/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 <img src="/placeholders/comand/Igor.png" alt="Игорь Зеликов" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
@@ -123,6 +125,8 @@ const AboutPage = () => {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-100 hover:border-pet-orange/20 team-card">
+              <div className="snake-border-left"></div>
+              <div className="snake-border-right"></div>
               <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-pet-orange/10 hover:ring-pet-orange/30 transition-all duration-300 relative">
                 <div className="absolute inset-0 bg-pet-orange/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 <img src="/placeholders/comand/Ilya1.png" alt="Илья Гусаров" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
@@ -135,6 +139,8 @@ const AboutPage = () => {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center border border-gray-100 hover:border-pet-orange/20 team-card">
+              <div className="snake-border-left"></div>
+              <div className="snake-border-right"></div>
               <div className="w-40 h-40 bg-gray-200 rounded-full overflow-hidden mx-auto mb-4 ring-4 ring-pet-orange/10 hover:ring-pet-orange/30 transition-all duration-300 relative">
                 <div className="absolute inset-0 bg-pet-orange/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                 <img src="/placeholders/comand/Ilya2.png" alt="Илья Моторин" className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />

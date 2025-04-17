@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Layout from '../components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 
 const ContactPage = () => {
   const location = useLocation();
+  const mapRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,6 +22,14 @@ const ContactPage = () => {
   useEffect(() => {
     // Прокрутка страницы вверх при монтировании компонента
     window.scrollTo(0, 0);
+
+    // Проверяем, есть ли параметр scrollToMap в state
+    if (location.state && location.state.scrollToMap) {
+      // Даем немного времени для рендеринга страницы
+      setTimeout(() => {
+        mapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
   }, [location]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -214,7 +223,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100 py-12">
+      <div className="bg-gray-100 py-12" ref={mapRef}>
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">Наш офис</h2>
           <div className="bg-white rounded-lg shadow-sm p-4 aspect-video">
