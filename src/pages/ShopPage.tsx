@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
+import { Search } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import Filters from '../components/shop/Filters';
 import ProductsList from '../components/shop/ProductsList';
@@ -9,6 +9,8 @@ import { Filter, PetType, Product } from '../types/types';
 import { getFilteredProducts } from '../services/productService';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal, X } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const ShopPage = () => {
   const location = useLocation();
@@ -17,7 +19,6 @@ const ShopPage = () => {
   const searchParams = new URLSearchParams(location.search);
   const petTypeFromUrl = searchParams.get('pet') as PetType | null;
 
-  // Scroll page to top when navigating to it
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -33,6 +34,8 @@ const ShopPage = () => {
   const [loading, setLoading] = useState(false);
   const [activePet, setActivePet] = useState<PetType | null>(petTypeFromUrl);
   const [products, setProducts] = useState<Product[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc'>('featured');
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -42,7 +45,9 @@ const ShopPage = () => {
         filter.categories.length > 0 ? filter.categories : undefined,
         filter.priceRange,
         filter.brands.length > 0 ? filter.brands : undefined,
-        filter.tags.length > 0 ? filter.tags : undefined
+        filter.tags.length > 0 ? filter.tags : undefined,
+        searchTerm,
+        sortBy
       );
       setProducts(data);
     } catch (error) {
@@ -58,12 +63,10 @@ const ShopPage = () => {
   };
 
   useEffect(() => {
-    // Update products when the filter changes
     fetchProducts();
-  }, [filter, activePet]);
+  }, [filter, activePet, searchTerm, sortBy]);
 
   useEffect(() => {
-    // Update the active pet type when the URL changes
     if (petTypeFromUrl && petTypeFromUrl !== activePet) {
       setActivePet(petTypeFromUrl);
     }
@@ -76,7 +79,6 @@ const ShopPage = () => {
   const handlePetTypeChange = (petType: PetType | null) => {
     setActivePet(petType);
 
-    // Update URL
     if (petType) {
       searchParams.set('pet', petType);
     } else {
@@ -106,7 +108,6 @@ const ShopPage = () => {
         <h1 className="text-3xl font-bold mb-8">Магазин</h1>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filters - Desktop */}
           <div className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-24">
               <div className="flex justify-between items-center mb-6">
@@ -124,13 +125,18 @@ const ShopPage = () => {
             </div>
           </div>
 
-          {/* Products */}
           <div className="flex-1">
-            <div className="flex justify-between items-center mb-6">
-              <div>
-                <p className="text-gray-600">Показано {products.length} товаров</p>
-              </div>
-              <div className="flex gap-4 items-center">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0">
+              <div className="flex items-center w-full gap-4">
+                <div className="relative flex-grow">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <Input 
+                    placeholder="Поиск товаров..." 
+                    className="pl-10 w-full"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
                 <Button
                   variant="outline"
                   size="sm"
@@ -140,17 +146,20 @@ const ShopPage = () => {
                   <SlidersHorizontal size={16} />
                   <span>Фильтры</span>
                 </Button>
-
-                <select
-                  className="border-gray-300 rounded-md text-sm focus:outline-none focus:ring focus:ring-pet-orange/40 p-2"
-                  defaultValue="featured"
-                >
-                  <option value="featured">По популярности</option>
-                  <option value="price-asc">Цена: от низкой к высокой</option>
-                  <option value="price-desc">Цена: от высокой к низкой</option>
-                  <option value="name-asc">Название: А-Я</option>
-                  <option value="name-desc">Название: Я-А</option>
-                </select>
+              </div>
+              <div className="flex gap-4 items-center">
+                <Select value={sortBy} onValueChange={(value: typeof sortBy) => setSortBy(value)}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Сортировка" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="featured">По популярности</SelectItem>
+                    <SelectItem value="price-asc">Цена: от низкой к высокой</SelectItem>
+                    <SelectItem value="price-desc">Цена: от высокой к низкой</SelectItem>
+                    <SelectItem value="name-asc">Название: А-Я</SelectItem>
+                    <SelectItem value="name-desc">Название: Я-А</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
@@ -159,7 +168,6 @@ const ShopPage = () => {
         </div>
       </div>
 
-      {/* Mobile filters overlay */}
       {mobileFiltersOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
           <div className="absolute right-0 top-0 bottom-0 w-80 bg-white p-6 overflow-y-auto">

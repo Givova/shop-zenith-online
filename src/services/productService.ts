@@ -65,7 +65,9 @@ export const getFilteredProducts = async (
   categories?: string[],
   priceRange?: { min: number; max: number },
   brands?: string[],
-  tags?: string[]
+  tags?: string[],
+  searchTerm?: string,
+  sortBy?: 'featured' | 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc'
 ): Promise<Product[]> => {
   let query = supabase
     .from('products')
@@ -76,8 +78,6 @@ export const getFilteredProducts = async (
   }
   
   if (categories && categories.length > 0) {
-    // Since we can't directly query for "in array" with Supabase, 
-    // we'll filter categories with in()
     query = query.in('category', categories);
   }
   
@@ -89,7 +89,11 @@ export const getFilteredProducts = async (
     query = query.in('brand', brands);
   }
   
-  // Note: For tags, we'll need to filter manually after fetching since it's an array
+  if (searchTerm) {
+    query = query.or(
+      `name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%,tags.cs.{${searchTerm}}`
+    );
+  }
   
   const { data, error } = await query;
   
@@ -105,6 +109,25 @@ export const getFilteredProducts = async (
     results = results.filter(product => 
       product.tags.some(tag => tags.includes(tag))
     );
+  }
+  
+  // Sorting
+  switch (sortBy) {
+    case 'featured':
+      results.sort((a, b) => Number(b.popular) - Number(a.popular));
+      break;
+    case 'price-asc':
+      results.sort((a, b) => a.price - b.price);
+      break;
+    case 'price-desc':
+      results.sort((a, b) => b.price - a.price);
+      break;
+    case 'name-asc':
+      results.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'name-desc':
+      results.sort((a, b) => b.name.localeCompare(a.name));
+      break;
   }
   
   return results;
