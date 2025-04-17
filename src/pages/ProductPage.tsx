@@ -20,10 +20,10 @@ const ProductPage = () => {
     return (
       <Layout>
         <div className="container mx-auto px-4 py-12 text-center">
-          <h2 className="text-2xl font-bold mb-4">Product Not Found</h2>
-          <p className="mb-6">We couldn't find the product you're looking for.</p>
+          <h2 className="text-2xl font-bold mb-4">Товар не найден</h2>
+          <p className="mb-6">Мы не смогли найти товар, который вы ищете.</p>
           <Button asChild>
-            <Link to="/shop">Return to Shop</Link>
+            <Link to="/shop">Вернуться в магазин</Link>
           </Button>
         </div>
       </Layout>
@@ -146,7 +146,7 @@ const ProductPage = () => {
                 onClick={handleAddToCart}
               >
                 <ShoppingCart size={18} />
-                <span>Add to Cart</span>
+                <span>Добавить в корзину</span>
               </Button>
               
               <Button 
