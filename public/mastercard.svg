@@ -1,8 +1,0 @@
-
-<!-- Placeholder SVG for Mastercard logo -->
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="24" viewBox="0 0 40 24">
-  <rect width="40" height="24" fill="#FFF" rx="4"/>
-  <circle cx="16" cy="12" r="8" fill="#EB001B"/>
-  <circle cx="24" cy="12" r="8" fill="#F79E1B"/>
-  <path fill="#FF5F00" d="M20 17.1a8 8 0 01-3.1-5.1 8 8 0 013.1-5.1 8 8 0 013.1 5.1 8 8 0 01-3.1 5.1z"/>
-</svg>

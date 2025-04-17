@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
+  const [catCursorActive, setCatCursorActive] = useState(false);
+  const [dogCursorActive, setDogCursorActive] = useState(false);
+
+  const handleCatClick = () => {
+    setCatCursorActive(!catCursorActive);
+  };
+
+  const handleDogClick = () => {
+    setDogCursorActive(!dogCursorActive);
+  };
+
+  // Применяем стиль курсора на всю страницу при активации
+  useEffect(() => {
+    if (catCursorActive) {
+      document.body.style.cursor = `url('/placeholders/cursors/cat_paw.png'), auto`;
+    } else if (dogCursorActive) {
+      document.body.style.cursor = `url('/placeholders/cursors/dog_paw.png'), auto`;
+    } else {
+      document.body.style.cursor = 'auto';
+    }
+
+    return () => {
+      document.body.style.cursor = 'auto';
+    };
+  }, [catCursorActive, dogCursorActive]);
+
   return (
     <div className="relative bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 py-12 md:py-20">
@@ -34,14 +60,32 @@ const Hero = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-pet-orange rounded-full opacity-50 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-pet-orange rounded-full opacity-30 blur-3xl"></div>
-            <img 
-              src="/placeholders/main_cat.png" 
-              alt="Кошка" 
-              className="relative z-10 mx-auto md:ml-auto w-full max-w-md"
-              style={{ maxHeight: '500px', objectFit: 'cover' }}
-            />
+            {/* <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-pet-orange rounded-full opacity-50 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-pet-orange rounded-full opacity-30 blur-3xl"></div> */}
+            <div className="relative z-10 mx-auto md:ml-auto w-full max-w-md h-[500px]">
+              <div className="absolute inset-0 translate-x-[-50px] scale-125">
+                <img 
+                  src="/placeholders/main_dog.png" 
+                  alt="Собака" 
+                  className="absolute inset-5 w-75 h-full object-fit translate-x-[200px] z-30 scale-90"
+                  style={{ cursor: `url('/placeholders/cursors/dog_paw.png'), pointer` }}
+                  onClick={handleDogClick}
+                />
+                <img 
+                  src="/placeholders/main_cat.png" 
+                  alt="Кошка" 
+                  className="w-full h-full object-contain scale-75"
+                  style={{ cursor: `url('/placeholders/cursors/cat_paw.png'), pointer` }}
+                  onClick={handleCatClick}
+                />
+                <img 
+                  src="/placeholders/main_food.png" 
+                  alt='корм'
+                  className='absolute inset-0 w-full h-full object-contain z-50 translate-x-[220px] translate-y-[400px]'
+                  style={{ cursor: `default, pointer`, scale: '0.37' }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

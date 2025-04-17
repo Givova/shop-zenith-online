@@ -106,8 +106,13 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="border-t mt-10 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-600 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Точка корма. Все права защищены.
+            <div className="text-sm text-gray-600 mb-4 md:mb-0">
+              <p>&copy; {new Date().getFullYear()} Точка корма. Все права защищены.</p>
+              <p>ООО "Новые решения"</p>
+              <p>ИНН 6732243595</p>
+            </div>
+            <p className="text-sm text-gray-600">
+              Иконки предоставлены <a href="https://www.flaticon.com/ru/free-icons/" className="text-pet-orange hover:underline" target="_blank" rel="noopener noreferrer">Freepik - Flaticon</a>
             </p>
           </div>
         </div>
