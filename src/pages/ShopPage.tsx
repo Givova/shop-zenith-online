@@ -1,20 +1,23 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useToast } from '@/components/ui/use-toast';
 import Layout from '../components/layout/Layout';
 import Filters from '../components/shop/Filters';
 import ProductsList from '../components/shop/ProductsList';
-import { Filter, PetType } from '../types/types';
-import { getFilteredProducts } from '../data/products';
+import { Filter, PetType, Product } from '../types/types';
+import { getFilteredProducts } from '../services/productService';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal, X } from 'lucide-react';
 
 const ShopPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const searchParams = new URLSearchParams(location.search);
   const petTypeFromUrl = searchParams.get('pet') as PetType | null;
 
-  // Прокрутка страницы вверх при переходе на нее
+  // Scroll page to top when navigating to it
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -29,23 +32,34 @@ const ShopPage = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activePet, setActivePet] = useState<PetType | null>(petTypeFromUrl);
-  const [products, setProducts] = useState(getFilteredProducts(activePet || undefined));
+  const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
-    // Update products when the filter changes
+  const fetchProducts = async () => {
     setLoading(true);
-
-    setTimeout(() => {
-      const filtered = getFilteredProducts(
+    try {
+      const data = await getFilteredProducts(
         activePet || undefined,
         filter.categories.length > 0 ? filter.categories : undefined,
         filter.priceRange,
         filter.brands.length > 0 ? filter.brands : undefined,
         filter.tags.length > 0 ? filter.tags : undefined
       );
-      setProducts(filtered);
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      toast({
+        title: "Ошибка загрузки",
+        description: "Не удалось загрузить товары. Пожалуйста, попробуйте позже.",
+        variant: "destructive"
+      });
+    } finally {
       setLoading(false);
-    }, 500); // Simulating loading
+    }
+  };
+
+  useEffect(() => {
+    // Update products when the filter changes
+    fetchProducts();
   }, [filter, activePet]);
 
   useEffect(() => {
@@ -86,36 +100,10 @@ const ShopPage = () => {
     navigate('/shop');
   };
 
-  // const petTypes: { type: PetType | null, name: string, image: string }[] = [
-  //   { type: null, name: 'Все питомцы', image: '/placeholders/all-pets.png' },
-  //   { type: 'cat', name: 'Кошки', image: '/placeholders/cat-silhouette.png' },
-  //   { type: 'dog', name: 'Собаки', image: '/placeholders/dog-silhouette.png' },
-  //   { type: 'hamster', name: 'Хомяки', image: '/placeholders/hamster-silhouette.png' },
-  //   { type: 'parrot', name: 'Попугаи', image: '/placeholders/parrot-silhouette.png' },
-  //   { type: 'rabbit', name: 'Кролики', image: '/placeholders/rabbit-silhouette.png' },
-  //   { type: 'turtle', name: 'Черепахи', image: '/placeholders/turtle-silhouette.png' },
-  // ];
-
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Магазин</h1>
-
-        {/* Pet type filter */}
-        {/* <div className="flex overflow-x-auto pb-4 mb-6 -mx-4 px-4 space-x-4 scrollbar-hide">
-          {petTypes.map((pet) => (
-            <div 
-              key={pet.type || 'all'} 
-              className={`flex-shrink-0 cursor-pointer transition-all ${activePet === pet.type ? 'scale-110' : 'opacity-70 hover:opacity-100'}`}
-              onClick={() => handlePetTypeChange(pet.type)}
-            >
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-2 ${activePet === pet.type ? 'bg-pet-orange/20' : 'bg-gray-200'}`}>
-                <img src={pet.image} alt={pet.name} className="w-10 h-10 object-contain" />
-              </div>
-              <p className={`text-xs text-center ${activePet === pet.type ? 'font-semibold text-pet-orange' : ''}`}>{pet.name}</p>
-            </div>
-          ))}
-        </div> */}
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters - Desktop */}
