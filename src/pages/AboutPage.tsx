@@ -23,28 +23,32 @@ const AboutPage = () => {
             <div>
               <h2 className="text-3xl font-bold mb-6">Наша история</h2>
               <p className="text-gray-700 mb-4">
-                Наш зоомагазин был основан в 2015 году с простой миссией: обеспечивать владельцев 
-                домашних животных высококачественными товарами и профессиональным советом, чтобы помочь 
-                их питомцам жить счастливой и здоровой жизнью.
+                "Точка корма" была основана в 2025 году с простой миссией: обеспечивать владельцев 
+                домашних животных высококачественными кормами и аксессуарами по доступным ценам.
               </p>
               <p className="text-gray-700 mb-4">
-                Начавшись как небольшой семейный бизнес, мы выросли в надежный магазин товаров 
-                для домашних животных с несколькими точками по всей стране. С нашим ростом мы 
-                продолжаем придерживаться основных ценностей качества, заботы и поддержки сообщества.
+                Мы создали место, где каждый питомец получает заботу и внимание, которых он заслуживает. 
+                Наши клиенты - это не просто покупатели, а члены большой семьи любителей животных. 
+                Мы всегда готовы помочь с выбором корма, поделиться советами по уходу и поддержать 
+                в любых вопросах, связанных с заботой о питомцах.
               </p>
               <p className="text-gray-700">
                 Мы тщательно отбираем каждый продукт, гарантируя его высокое качество и безопасность. 
-                Мы верим, что каждый питомец заслуживает самого лучшего, и мы здесь, чтобы помочь 
-                владельцам животных обеспечить именно такую заботу.
+                Наша команда постоянно работает над расширением ассортимента и улучшением сервиса, 
+                чтобы сделать покупки максимально удобными для наших клиентов.
               </p>
             </div>
-            <div className="relative">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-pet-orange rounded-full opacity-20"></div>
-              <img 
-                src="/placeholders/pet-shop-team.jpg" 
-                alt="Наша команда" 
-                className="rounded-lg shadow-lg relative z-10"
-              />
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-8 text-pet-orange tracking-wide">Наш директор по качеству</h3>
+              <div className="relative">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-pet-orange rounded-full opacity-20"></div>
+                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                  <svg className="w-12 h-12 text-pet-orange animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </div>
+                <img src="/placeholders/comand/Director.png" alt="Директор по качеству" className="relative z-10 w-full max-w-md mx-auto" />
+              </div>
             </div>
           </div>
         </div>
