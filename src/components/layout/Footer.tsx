@@ -10,13 +10,15 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <div className="flex items-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-pet-orange mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-              </svg>
-              <span className="font-bold text-xl">Зоомагазин</span>
+              <img 
+                src="/placeholders/icons_pet/Logo.png" 
+                alt="Логотип Точка корма" 
+                className="h-8 w-auto mr-2"
+              />
+              <span className="font-montserrat font-bold text-xl">Точка корма</span>
             </div>
             <p className="text-gray-600 mb-4">
-              Ваш любимый магазин для питомцев с широким выбором товаров и аксессуаров.
+              Ваш любимый магазин кормов и аксессуаров для питомцев.
             </p>
             <div className="flex space-x-3">
               <a href="#" className="text-gray-500 hover:text-pet-orange transition-colors">
@@ -105,7 +107,7 @@ const Footer = () => {
         <div className="border-t mt-10 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-600 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Pet Shop. Все права защищены.
+              &copy; {new Date().getFullYear()} Точка корма. Все права защищены.
             </p>
           </div>
         </div>

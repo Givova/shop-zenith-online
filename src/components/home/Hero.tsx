@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,9 +8,9 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="z-10">
-            <div className="text-sm font-medium text-pet-orange mb-2">Зоомагазин</div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Дружественный и заботливый магазин для домашних животных
+            <div className="text-sm font-medium text-pet-orange mb-2 font-montserrat">Точка корма</div>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-montserrat">
+              Дружественный и заботливый магазин кормов для домашних животных
             </h1>
             <p className="text-lg text-gray-600 mb-8">
               Мы с любовью заботимся о ваших питомцах, предлагая только лучшие товары и аксессуары
@@ -38,10 +37,10 @@ const Hero = () => {
             <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-pet-orange rounded-full opacity-50 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-pet-orange rounded-full opacity-30 blur-3xl"></div>
             <img 
-              src={`${import.meta.env.BASE_URL}/lovable-uploads/cfe08521-ee4e-4c60-afb7-efaa9aaca556.png`} 
-              alt="Зоомагазин" 
-              className="relative z-10 mx-auto md:ml-auto rounded-lg shadow-md"
-              style={{ maxHeight: '500px' }}
+              src="/placeholders/main_cat.png" 
+              alt="Кошка" 
+              className="relative z-10 mx-auto md:ml-auto w-full max-w-md"
+              style={{ maxHeight: '500px', objectFit: 'cover' }}
             />
           </div>
         </div>

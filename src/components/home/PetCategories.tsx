@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -16,7 +15,11 @@ const PetCategoryCard: React.FC<PetCategoryCardProps> = ({ type, name, image }) 
     <Link to={`/shop?pet=${type}`} className="pet-category block">
       <div className="flex flex-col items-center">
         <div className="bg-gray-200 rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center overflow-hidden mb-3">
-          <img src={image} alt={name} className="w-20 h-20 md:w-24 md:h-24 object-contain" />
+          <img 
+            src={image} 
+            alt={name} 
+            className="w-full h-full object-cover"
+          />
         </div>
         <h3 className="font-medium text-center">{name}</h3>
       </div>
@@ -26,12 +29,12 @@ const PetCategoryCard: React.FC<PetCategoryCardProps> = ({ type, name, image }) 
 
 const PetCategories = () => {
   const categories: PetCategoryCardProps[] = [
-    { type: 'cat', name: 'Кошки', image: '/placeholders/cat-silhouette.png' },
-    { type: 'hamster', name: 'Хомяки', image: '/placeholders/hamster-silhouette.png' },
-    { type: 'dog', name: 'Собаки', image: '/placeholders/dog-silhouette.png' },
-    { type: 'parrot', name: 'Попугаи', image: '/placeholders/parrot-silhouette.png' },
-    { type: 'rabbit', name: 'Кролики', image: '/placeholders/rabbit-silhouette.png' },
-    { type: 'turtle', name: 'Черепахи', image: '/placeholders/turtle-silhouette.png' },
+    { type: 'кошка', name: 'Кошки', image: '/placeholders/icons_pet/cat.png' },
+    { type: 'хомяк', name: 'Хомяки', image: '/placeholders/icons_pet/Xoma.png' },
+    { type: 'собака', name: 'Собаки', image: '/placeholders/icons_pet/dog.png' },
+    { type: 'попугай', name: 'Попугаи', image: '/placeholders/icons_pet/popug.png' },
+    { type: 'кролик', name: 'Кролики', image: '/placeholders/icons_pet/rabbit.png' },
+    { type: 'черепаха', name: 'Черепахи', image: '/placeholders/icons_pet/turtle.png' },
   ];
 
   const scrollLeft = () => {
