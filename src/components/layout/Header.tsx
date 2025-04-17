@@ -57,10 +57,10 @@ const Header = () => {
               <img
                 src="/placeholders/icons_pet/Logo.png"
                 alt="Логотип Точка корма"
-                className="h-12 w-auto mr-2 object-contain overflow-hidden"
-                style={{ objectPosition: 'center', marginTop: '-4px' }}
+                className="h-12 w-auto mr-2 ml-2 object-contain overflow-hidden"
+                style={{ objectPosition: 'center', marginTop: '4px', scale: '1' }}
               />
-              <span className="font-montserrat font-bold text-xl leading-none">Точка корма</span>
+              <span className="font-montserrat font-bold text-xl leading-none text-pet-orange">Точка корма</span>
             </Link>
           </div>
 
